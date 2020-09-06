@@ -19,19 +19,20 @@ LIMIT 10;
 --All the distinct countries with a population of over 100 million in the year 2010
 SELECT DISTINCT country, population
 FROM population_years
-WHERE population > 100.0
-AND year = 2010
+WHERE year = 2010
+AND population > 100.0
 ORDER BY population DESC;
 
 --How many countries in this dataset have the word "Islands" in their name
-SELECT COUNT(*) FROM (SELECT DISTINCT country
+SELECT COUNT(DISTINCT country)
 FROM population_years
-WHERE country like '%Islands%');
+WHERE country like '%Islands%';
 
 
 --The difference in population between 2000 and 2010 in Indonesia
 SELECT MAX(population) - MIN(population) AS populationDIFF FROM
 population_years
-WHERE country = 'Indonesia';
+WHERE country = 'Indonesia'
+AND (year >= 2000 AND year <= 2010);
 
 
